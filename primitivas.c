@@ -40,13 +40,13 @@ int sacar_de_cola(t_lista *p, t_info *d)
     aux = (*p)->sig;
     *d = aux->info;
 
-    if((*p)->sig == *p)
+    if(aux == *p)
     {
         free(aux);
         *p = NULL;
     }
 
-    (*p)->sig = (*p)->sig->sig;
+    aux = aux->sig;
 
     free(aux);
     return 1;
@@ -59,4 +59,37 @@ int ver_primero_cola(const t_lista *p, t_info *d)
 
     *d = (*p)->sig->info;
     return 1;
+}
+
+int cola_llena(const t_lista *p)
+{
+    //CORREGIR
+    t_nodo *aux = (t_nodo *)malloc(sizeof(t_nodo));
+    if(aux == NULL)
+        return 0;
+    return 1;
+}
+
+int vaciar_cola(t_lista *p)
+{
+    //CORREGIR
+    if((*p)->sig == NULL)
+        return 0;
+
+    while(*p)
+    {
+        t_nodo *aux;
+        aux = (*p)->sig;
+        (*p)->sig = aux->sig;
+        free(aux);
+    }
+    return 1;
+}
+
+int cola_vacia(const t_lista *p)
+{
+    //CORREGIR
+    if(*p == NULL)
+        return 1;
+    return 0;
 }
